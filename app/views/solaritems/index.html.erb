@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solaritems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Brand</th>
+      <th>Peak power</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solaritems.each do |solaritem| %>
+      <tr>
+        <td><%= solaritem.name %></td>
+        <td><%= solaritem.description %></td>
+        <td><%= solaritem.brand %></td>
+        <td><%= solaritem.peak_power %></td>
+        <td><%= link_to 'Show', solaritem %></td>
+        <td><%= link_to 'Edit', edit_solaritem_path(solaritem) %></td>
+        <td><%= link_to 'Destroy', solaritem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solaritem', new_solaritem_path %>

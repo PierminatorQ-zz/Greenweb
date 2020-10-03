@@ -1,0 +1,78 @@
+<%= form_with(model: solaritem, local: true) do |form| %>
+  <% if solaritem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solaritem.errors.count, "error") %> prohibited this solaritem from being saved:</h2>
+
+      <ul>
+      <% solaritem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :peak_power %>
+    <%= form.number_field :peak_power %>
+  </div>
+
+    <div class="field">
+    <%= form.label :flux %>
+    <%= form.number_field :flux %>
+  </div>
+
+    <div class="field">
+    <%= form.label :voltage_work %>
+    <%= form.number_field :voltage_work %>
+  </div>
+
+    <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Solaritem.statuses.keys.to_a %>
+  </div>
+
+    <div class="field">
+    <%= form.label :voc %>
+    <%= form.number_field :voc %>
+  </div>
+
+    <div class="field">
+    <%= form.label :isc %>
+    <%= form.number_field :isc %>
+  </div>
+
+    <div class="field">
+    <%= form.label :efficiency %>
+    <%= form.number_field :efficiency %>
+  </div>
+
+   <div class="field">
+    <%= form.label :battery %>
+    <%= form.text_field :battery %>
+  </div>
+
+    <div class="field">
+    <%= form.label :additionals %>
+    <%= form.text_area :additionals %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

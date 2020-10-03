@@ -1,0 +1,62 @@
+<%= form_with(model: cctvitem, local: true) do |form| %>
+  <% if cctvitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cctvitem.errors.count, "error") %> prohibited this cctvitem from being saved:</h2>
+
+      <ul>
+      <% cctvitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+   <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Cctvitem.statuses.keys.to_a %>
+  </div>
+
+    <div class="field">
+    <%= form.label :resolution %>
+    <%= form.number_field :resolution %>
+  </div>
+
+    <div class="field">
+    <%= form.label :type_of %>
+    <%= form.text_field :type_of %>
+  </div>
+
+    <div class="field">
+    <%= form.label :channels %>
+    <%= form.number_field :channels %>
+  </div>
+
+   <div class="field">
+    <%= form.label :max_channels_ip %>
+    <%= form.text_field :max_channels_ip %>
+  </div>
+
+    <div class="field">
+    <%= form.label :additionals %>
+    <%= form.text_area :additionals %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

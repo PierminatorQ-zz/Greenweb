@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lightitems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Brand</th>
+      <th>Power</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lightitems.each do |lightitem| %>
+      <tr>
+        <td><%= lightitem.name %></td>
+        <td><%= lightitem.description %></td>
+        <td><%= lightitem.brand %></td>
+        <td><%= lightitem.power %></td>
+        <td><%= link_to 'Show', lightitem %></td>
+        <td><%= link_to 'Edit', edit_lightitem_path(lightitem) %></td>
+        <td><%= link_to 'Destroy', lightitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lightitem', new_lightitem_path %>

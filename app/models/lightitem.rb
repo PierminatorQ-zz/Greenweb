@@ -1,0 +1,2 @@
+class Lightitem < ApplicationRecord
+end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @solaritem.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @solaritem.description %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @solaritem.brand %>
+</p>
+
+<p>
+  <strong>Peak power:</strong>
+  <%= @solaritem.peak_power %>
+</p>
+
+<%= link_to 'Edit', edit_solaritem_path(@solaritem) %> |
+<%= link_to 'Back', solaritems_path %>

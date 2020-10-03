@@ -1,0 +1,2 @@
+class Cctvitem < ApplicationRecord
+end

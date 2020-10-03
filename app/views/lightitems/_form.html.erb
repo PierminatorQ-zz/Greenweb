@@ -1,0 +1,75 @@
+<%= form_with(model: lightitem, local: true) do |form| %>
+  <% if lightitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lightitem.errors.count, "error") %> prohibited this lightitem from being saved:</h2>
+
+      <ul>
+      <% lightitem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :power %>
+    <%= form.number_field :power %>
+  </div>
+
+    <div class="field">
+    <%= form.label :flux %>
+    <%= form.number_field :flux %>
+  </div>
+
+    <div class="field">
+    <%= form.label :voltage %>
+    <%= form.number_field :voltage %>
+  </div>
+
+    <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Lightitem.statuses.keys.to_a %>
+  </div>
+
+    <div class="field">
+    <%= form.label :useful_life %>
+    <%= form.number_field :useful_life %>
+  </div>
+
+    <div class="field">
+    <%= form.label :ip_protection %>
+    <%= form.number_field :ip_protection %>
+  </div>
+
+    <div class="field">
+    <%= form.label :color_temp %>
+    <%= form.number_field :color_temp %>
+  </div>
+
+    <div class="field">
+    <%= form.label :additionals %>
+    <%= form.text_area :additionals %>
+  </div>
+
+
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
