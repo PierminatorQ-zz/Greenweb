@@ -1,3 +1,5 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-6">
 <%= form_with(model: solaritem, local: true) do |form| %>
   <% if solaritem.errors.any? %>
     <div id="error_explanation">
@@ -11,64 +13,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class:" control-label" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :description, class:" control-label" %>
+    <%= form.text_area :description, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
+  <div class="form-group">
+    <%= form.label :brand, class:" control-label" %>
+    <%= form.text_field :brand, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :peak_power %>
-    <%= form.number_field :peak_power %>
+  <div class="form-group">
+    <%= form.label :peak_power, class:" control-label" %>
+    <%= form.number_field :peak_power, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :flux %>
-    <%= form.number_field :flux %>
+    <div class="form-group">
+    <%= form.label :flux, class:" control-label" %>
+    <%= form.number_field :flux, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :voltage_work %>
-    <%= form.number_field :voltage_work %>
+    <div class="form-group">
+    <%= form.label :voltage_work, class:" control-label" %>
+    <%= form.number_field :voltage_work , class:"form-control"%>
   </div>
 
-    <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Solaritem.statuses.keys.to_a %>
+    <div class="form-group">
+    <%= form.label :status, class:" control-label" %>
+    <%= form.select :status, Solaritem.statuses.keys.to_a , class:"form-control"%>
   </div>
 
-    <div class="field">
-    <%= form.label :voc %>
-    <%= form.number_field :voc %>
+    <div class="form-group">
+    <%= form.label :voc, class:" control-label" %>
+    <%= form.number_field :voc, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :isc %>
-    <%= form.number_field :isc %>
+    <div class="form-group">
+    <%= form.label :isc, class:" control-label" %>
+    <%= form.number_field :isc, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :efficiency %>
-    <%= form.number_field :efficiency %>
+    <div class="form-group">
+    <%= form.label :efficiency, class:" control-label" %>
+    <%= form.number_field :efficiency, class:"form-control"%>
   </div>
 
-   <div class="field">
-    <%= form.label :battery %>
-    <%= form.text_field :battery %>
+   <div class="form-group">
+    <%= form.label :battery, class:" control-label" %>
+    <%= form.text_field :battery, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :additionals %>
-    <%= form.text_area :additionals %>
+    <div class="form-group">
+    <%= form.label :additionals, class:" control-label" %>
+    <%= form.text_area :additionals, class:"form-control" %>
   </div>
 
  <%= form.fields_for :producats do |builder|%>
@@ -109,3 +111,5 @@
     <%= form.submit "Guardar", class:"btn-go btn-sm" %>
   </div>
 <% end %>
+</div>
+</div>

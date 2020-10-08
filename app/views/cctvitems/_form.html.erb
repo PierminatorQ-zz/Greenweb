@@ -1,3 +1,5 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-6">
 <%= form_with(model: cctvitem, local: true) do |form| %>
     <% if cctvitem.errors.any? %>
       <div id="error_explanation">
@@ -11,49 +13,49 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+    <div class="form-group">
+      <%= form.label :name, class:" control-label" %>
+      <%= form.text_field :name, class:"form-control" %>
     </div>
 
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description %>
+    <div class="form-group">
+      <%= form.label :description, class:" control-label" %>
+      <%= form.text_area :description, class:"form-control" %>
     </div>
 
-    <div class="field">
-      <%= form.label :brand %>
-      <%= form.text_field :brand %>
+    <div class="form-group">
+      <%= form.label :brand, class:" control-label" %>
+      <%= form.text_field :brand, class:"form-control" %>
     </div>
 
-    <div class="field">
-      <%= form.label :status %>
-      <%= form.select :status, Cctvitem.statuses.keys.to_a %>
+    <div class="form-group">
+      <%= form.label :status, class:" control-label" %>
+      <%= form.select :status, Cctvitem.statuses.keys.to_a, class:"form-control" %>
     </div>
 
-      <div class="field">
-      <%= form.label :resolution %>
-      <%= form.number_field :resolution %>
+      <div class="form-group">
+      <%= form.label :resolution, class:" control-label" %>
+      <%= form.number_field :resolution, class:"form-control" %>
     </div>
 
-      <div class="field">
-      <%= form.label :type_of %>
-      <%= form.text_field :type_of %>
+      <div class="form-group">
+      <%= form.label :type_of, class:" control-label" %>
+      <%= form.text_field :type_of , class:"form-control"%>
     </div>
 
-      <div class="field">
-      <%= form.label :channels %>
-      <%= form.number_field :channels %>
+      <div class="form-group">
+      <%= form.label :channels, class:" control-label" %>
+      <%= form.number_field :channels, class:"form-control" %>
     </div>
 
-    <div class="field">
-      <%= form.label :max_channels_ip %>
-      <%= form.text_field :max_channels_ip %>
+    <div class="form-group">
+      <%= form.label :max_channels_ip, class:" control-label" %>
+      <%= form.text_field :max_channels_ip, class:"form-control" %>
     </div>
 
-      <div class="field">
-      <%= form.label :additionals %>
-      <%= form.text_area :additionals %>
+      <div class="form-group">
+      <%= form.label :additionals, class:" control-label" %>
+      <%= form.text_area :additionals, class:"form-control" %>
     </div>
 
 
@@ -95,3 +97,5 @@
     <%= form.submit "Guardar", class:"btn-go btn-sm" %>
   </div>
 <%end%>
+  </div>
+</div>
