@@ -1,29 +1,102 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @solaritem.name %>
-</p>
+<div class="container items-index">
 
-<p>
-  <strong>Description:</strong>
-  <%= @solaritem.description %>
-</p>
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4 titulo-seccion"> <%=@solaritem.name%>
+    <small><%= @solaritem.brand%></small>
+  </h1>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @solaritem.brand %>
-</p>
+  <!-- Portfolio Item Row -->
+  <div class="row">
 
-<p>
-  <strong>Peak power:</strong>
-  <%= @solaritem.peak_power %>
-</p>
+    <div class="col-md-6">
+      <%= image_tag @solaritem.photos.first.variant(resize:500), class:"d-flex img-fluid" %>
+      <h3 class="my-3 titulo-producto">Descripciòn</h3>
+      <p> <%=@solaritem.description%> </p>
+    </div>
 
-<% @solaritem.categories.each do |t| %>
+    <div class="col-md-6">
+      <h3 class="titulo-espec mb-3">Especificaciones</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>Item</th>
+          <th>Valor</th>
+        </tr>
+        <tr>
+          <td> <strong>Marca</strong> </td>
+          <td> <%=@solaritem.brand %></td>
+        </tr>
+        <tr>
+          <td> <strong>Potencia</strong> </td>
+          <td> <%=@solaritem.peak_power %></td>
+        </tr>
+        <tr>
+          <td> <strong>Flux</strong> </td>
+          <td> <%=@solaritem.flux %></td>
+        </tr>
+        <tr>
+          <td> <strong>Voltaje de trabajo</strong> </td>
+          <td> <%=@solaritem.voltage_work %></td>
+        </tr>
+        <tr>
+          <td> <strong>VOC</strong> </td>
+          <td> <%=@solaritem.voc %></td>
+        </tr>
+        <tr>
+          <td> <strong>ISC</strong> </td>
+          <td> <%=@solaritem.isc %></td>
+        </tr>
+        <tr>
+          <td> <strong>Eficiencia</strong> </td>
+          <td> <%=@solaritem.efficiency %></td>
+        </tr>
+        <tr>
+          <td> <strong>Bateria</strong> </td>
+          <td> <%=@solaritem.battery %></td>
+        </tr>
+        <tr>
+          <td> <strong>Adicionales</strong> </td>
+          <td> <%=@solaritem.additionals %></td>
+        </tr>
+      </table>
+      
+    </div>
 
-  <p> <%=t.name%></p>
+  </div>
+  <!-- /.row -->
+
+
+
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related Projects</h3>
+
+  <div class="row">
+
+  <% @listado.first(4).each do |item|%>
+    
+    <% if item.active?%>
+  <div class="col-lg-3 col-md-6">
+            <div class="member card aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pic"> <%= image_tag item.photos.first.variant(resize:300), class:"d-flex img-fluid" %> </div>
+              <div class="member-info text-center">
+                <h4><%= item.name%></h4>
+                <span><%= item.brand%></span>
+                <div class="social">
+                <%= link_to 'ver mas...', solaritem_path(item.id), class:"btn btn btn-outline-success" %>
+                
+                  <a href=""></a>
+                  
+                </div>
+              </div>
+            </div>
+  </div>
   <%end%>
+<%end%>
+    
 
-<%= link_to 'Edit', edit_solaritem_path(@solaritem) %> |
-<%= link_to 'Back', solaritems_path %>
+  </div>
+  <!-- /.row -->
+
+</div>
+

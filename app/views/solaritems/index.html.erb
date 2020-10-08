@@ -1,42 +1,62 @@
 
+<div class="container items-index">
+  <h1 class="titulo-seccion">Paneles Solares</h1>
 
-<h1>Solaritems</h1>
-
-<table class="table table-ordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Brand</th>
-      <th>Peak power</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
     <% @solaritems.each do |solaritem| %>
-      <tr>
-        <td><%= solaritem.name %></td>
-        <td><%= solaritem.description %></td>
-        <td><%= solaritem.brand %></td>
-        <td><%= solaritem.peak_power %></td>
-        <td class="btn-group">
-          <%= link_to solaritem, class:"btn btn-primary"  do %>
-          <i class="lni lni-sm lni-search"></i>
-          <%end%>
-          <%= link_to edit_solaritem_path(solaritem), class:"btn btn-info"  do %>
-          <i class="lni lni-pencil"></i>
-          <%end%>
-          <%= link_to solaritem, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  do %>
-          <i class="lni lni-trash"></i>
-        <%end%>
-        </td>
-      </tr>
+
+    <div class="col-md-12 card">
+				<div class="media blog-media">
+          <%= image_tag solaritem.photos.first.variant(resize:450), class:"d-flex img-fluid" %>
+				  
+				  <div class="card-body d-flex flex-column">
+            
+            <%=link_to solaritem.name, @solaritem_path , class:"titulo-producto"%>  
+				    <div class="description_product"> <%=solaritem.description%></div>
+				    <h5 class="titulo-spec">ESPECIFICACIONES</h5>
+            <ul class="list-group list-group-flush item-lista">
+				    	<li class="list-group-item "><i class="ri-check-double-line"></i> <strong>Marca : </strong> <%= solaritem.brand%></li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Potencia Peak : </strong> <%= solaritem.peak_power%> Watts</li>
+				    	<li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Flux : </strong> <%= solaritem.flux%> F.</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Voltaje : </strong> <%= solaritem.voltage_work%> V.</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>VOC : </strong> <%= solaritem.voc%> Años</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>ISC : </strong> <%= solaritem.isc%> F.</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Eficiencia : </strong> <%= solaritem.efficiency%> C.</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Bateria : </strong> <%= solaritem.battery%> C.</li>
+              <li class="list-group-item"><i class="ri-check-double-line"></i> <strong>Adicionales : </strong> <%= solaritem.additionals%> F.</li>
+				    </ul>
+            <div class="row">
+
+
+              <% if signed_in?%>
+                <div class="ml-5 mt-3 text-danger">
+                  <span> <strong>Estado: </strong> </span> <span><%= solaritem.status%></span> 
+                </div>
+                <div class="btn-group ml-auto">
+                  <%= link_to solaritem, class:"btn btn-primary"  do %>
+                  <i class="lni lni-sm lni-search"></i>
+                  <%end%>
+                  <%= link_to edit_solaritem_path(solaritem), class:"btn btn-info"  do %>
+                    <i class="lni lni-pencil"></i>
+                  <%end%>
+                  <%= link_to solaritem, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  do %>
+                    <i class="lni lni-trash"></i>
+                  <%end%>
+                </div>
+              <%else%>
+              <%= link_to "Ver Producto", solaritem, class:"btn btn-ver ml-auto" %>
+              <%end%>
+              
+            </div>
+				  </div>
+				</div>
+		</div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+ <%#= paginate @solaritems ,class:"ml-auto"%>
 
 <br>
-
-<%= link_to 'New Solaritem', new_solaritem_path, class:"btn-go " %>
-
+<% if signed_in?%>
+<%= link_to 'Crear Producto', new_solaritem_path, class:"btn-go my-4 " %>
+<%end%>
+</div>

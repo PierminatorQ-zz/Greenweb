@@ -12,6 +12,7 @@ class CctvitemsController < ApplicationController
   # GET /cctvitems/1
   # GET /cctvitems/1.json
   def show
+    @listado= Cctvitem.joins(:categories).where(categories: {id: 3})
   end
 
   # GET /cctvitems/new

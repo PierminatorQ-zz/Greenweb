@@ -1537,7 +1537,7 @@ section {
 }
 
 #footer .footer-top .footer-info h3 {
-  font-size: 28px;
+  font-size: 1.3em;
   margin: 0 0 20px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
@@ -1815,4 +1815,8 @@ section {
 
 .member-info > .social > a:hover{
     color:var(--blueb);
+}
+
+.logo{
+  width:100px;
 }

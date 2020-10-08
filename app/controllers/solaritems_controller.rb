@@ -12,6 +12,7 @@ class SolaritemsController < ApplicationController
   # GET /solaritems/1
   # GET /solaritems/1.json
   def show
+    @listado= Solaritem.joins(:categories).where(categories: {id:2})
   end
 
   # GET /solaritems/new

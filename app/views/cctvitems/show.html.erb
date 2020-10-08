@@ -1,24 +1,91 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cctvitem.name %>
-</p>
+<div class="container items-index">
 
-<p>
-  <strong>Description:</strong>
-  <%= @cctvitem.description %>
-</p>
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4 titulo-seccion"> <%=@cctvitem.name%>
+    <small><%= @cctvitem.brand%></small>
+  </h1>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @cctvitem.brand %>
-</p>
+  <!-- Portfolio Item Row -->
+  <div class="row">
 
-<% @cctvitem.categories.each do |t| %>
+    <div class="col-md-6">
+      <%= image_tag @cctvitem.photos.first.variant(resize:500), class:"d-flex img-fluid" %>
+      <h3 class="my-3 titulo-producto">Descripciòn</h3>
+      <p> <%=@cctvitem.description%> </p>
+    </div>
 
-  <p> <%=t.name%></p>
+    <div class="col-md-6">
+      <h3 class="titulo-espec mb-3">Especificaciones</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>Item</th>
+          <th>Valor</th>
+        </tr>
+        <tr>
+          <td> <strong>Marca</strong> </td>
+          <td> <%=@cctvitem.brand %></td>
+        </tr>
+        <tr>
+          <td> <strong>Resoluciòn</strong> </td>
+          <td> <%=@cctvitem.resolution %></td>
+        </tr>
+        <tr>
+          <td> <strong>Tipo</strong> </td>
+          <td> <%=@cctvitem.type_of %></td>
+        </tr>
+        <tr>
+          <td> <strong>Canales</strong> </td>
+          <td> <%=@cctvitem.channels %></td>
+        </tr>
+        <tr>
+          <td> <strong> Max Canales Ip</strong> </td>
+          <td> <%=@cctvitem.max_channels_ip %></td>
+        </tr>
+        
+        <tr>
+          <td> <strong>Adicionales</strong> </td>
+          <td> <%=@cctvitem.additionals %></td>
+        </tr>
+      </table>
+      
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related Projects</h3>
+
+  <div class="row">
+
+  <% @listado.first(4).each do |item|%>
+    
+    <% if item.active?%>
+  <div class="col-lg-3 col-md-6">
+            <div class="member card aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pic"> <%= image_tag item.photos.first.variant(resize:300), class:"d-flex img-fluid" %> </div>
+              <div class="member-info text-center">
+                <h4><%= item.name%></h4>
+                <span><%= item.brand%></span>
+                <div class="social">
+                <%= link_to 'ver mas...', cctvitem_path(item.id), class:"btn btn btn-outline-success" %>
+                
+                  <a href=""></a>
+                  
+                </div>
+              </div>
+            </div>
+  </div>
+  <%end%>
 <%end%>
+    
 
-<%= link_to 'Edit', edit_cctvitem_path(@cctvitem) %> |
-<%= link_to 'Back', cctvitems_path %>
+  </div>
+  <!-- /.row -->
+
+</div>
+
