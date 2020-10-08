@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
 
 def set_variables
- @items = Lightitem.first(2) + Solaritem.first(2) + Cctvitem.first(2)
+ @items = Lightitem.all
 end
 
 end
