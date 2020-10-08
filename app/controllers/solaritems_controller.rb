@@ -1,5 +1,7 @@
 class SolaritemsController < ApplicationController
   before_action :set_solaritem, only: [:show, :edit, :update, :destroy]
+  before_action :delete_category, only: [:update]
+  
 
   # GET /solaritems
   # GET /solaritems.json
@@ -15,6 +17,7 @@ class SolaritemsController < ApplicationController
   # GET /solaritems/new
   def new
     @solaritem = Solaritem.new
+    @categories= @solaritem.producats.build
   end
 
   # GET /solaritems/1/edit
@@ -69,6 +72,11 @@ class SolaritemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def solaritem_params
-      params.require(:solaritem).permit(:name, :description, :brand, :peak_power, :flux, :voltage_work, :status, :voc, :isc, :efficiency, :battery,  :additionals)
+      params.require(:solaritem).permit(:name, :description, :brand, :peak_power, :flux, :voltage_work, :status, :voc, :isc, :efficiency, :battery,  :additionals, producats_attributes: [:category_id, :name], photos: [])
+    end
+
+    def delete_category
+      @category = Producat.where(solaritem: @solaritem.id).first
+      @category.destroy
     end
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lightitem: one
+  solaritem: one
+  cctvitem: one
+  category: one
+
+two:
+  lightitem: two
+  solaritem: two
+  cctvitem: two
+  category: two

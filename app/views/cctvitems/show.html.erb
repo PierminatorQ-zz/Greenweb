@@ -15,5 +15,10 @@
   <%= @cctvitem.brand %>
 </p>
 
+<% @cctvitem.categories.each do |t| %>
+
+  <p> <%=t.name%></p>
+<%end%>
+
 <%= link_to 'Edit', edit_cctvitem_path(@cctvitem) %> |
 <%= link_to 'Back', cctvitems_path %>

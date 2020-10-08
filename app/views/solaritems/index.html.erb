@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Solaritems</h1>
 
-<table>
+<table class="table table-ordered table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -20,9 +20,17 @@
         <td><%= solaritem.description %></td>
         <td><%= solaritem.brand %></td>
         <td><%= solaritem.peak_power %></td>
-        <td><%= link_to 'Show', solaritem %></td>
-        <td><%= link_to 'Edit', edit_solaritem_path(solaritem) %></td>
-        <td><%= link_to 'Destroy', solaritem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="btn-group">
+          <%= link_to solaritem, class:"btn btn-primary"  do %>
+          <i class="lni lni-sm lni-search"></i>
+          <%end%>
+          <%= link_to edit_solaritem_path(solaritem), class:"btn btn-info"  do %>
+          <i class="lni lni-pencil"></i>
+          <%end%>
+          <%= link_to solaritem, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  do %>
+          <i class="lni lni-trash"></i>
+        <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +38,5 @@
 
 <br>
 
-<%= link_to 'New Solaritem', new_solaritem_path %>
+<%= link_to 'New Solaritem', new_solaritem_path, class:"btn-go " %>
+

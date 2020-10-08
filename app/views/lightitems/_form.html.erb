@@ -1,4 +1,4 @@
-<%= form_with(model: lightitem, local: true) do |form| %>
+<%= form_with(model: lightitem, local: true, class:"form-horizontal") do |form| %>
   <% if lightitem.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(lightitem.errors.count, "error") %> prohibited this lightitem from being saved:</h2>
@@ -11,65 +11,96 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label "Nombre", class:" control-label" %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label "Descripcion", class:"control-label" %>
+    <%= form.text_area :description, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand %>
+  <div class="form-group">
+    <%= form.label "Marca", class:" control-label" %>
+    <%= form.text_field :brand, class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :power %>
-    <%= form.number_field :power %>
+  <div class="form-group">
+    <%= form.label "Power", class:" control-label" %>
+    <%= form.number_field :power, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :flux %>
-    <%= form.number_field :flux %>
+    <div class="form-group">
+    <%= form.label "Flux", class:" control-label" %>
+    <%= form.number_field :flux, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :voltage %>
-    <%= form.number_field :voltage %>
+    <div class="form-group">
+    <%= form.label "Voltaje", class:" control-label" %>
+    <%= form.number_field :voltage, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Lightitem.statuses.keys.to_a %>
+    <div class="form-group">
+    <%= form.label "estado", class:"control-label" %>
+    <%= form.select :status, Lightitem.statuses.keys.to_a,{}, { :class => 'form-control' } %>
   </div>
 
-    <div class="field">
-    <%= form.label :useful_life %>
-    <%= form.number_field :useful_life %>
+    <div class="form-group">
+    <%= form.label "Vida util", class:"control-label" %>
+    <%= form.number_field :useful_life, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :ip_protection %>
-    <%= form.number_field :ip_protection %>
+    <div class="form-group">
+    <%= form.label :ip_protection, class:"control-label" %>
+    <%= form.number_field :ip_protection, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :color_temp %>
-    <%= form.number_field :color_temp %>
+    <div class="form-group">
+    <%= form.label "Temperatura de color", class:" control-label" %>
+    <%= form.number_field :color_temp, class:"form-control" %>
   </div>
 
-    <div class="field">
-    <%= form.label :additionals %>
-    <%= form.text_area :additionals %>
+    <div class="form-group">
+    <%= form.label "Adicionales", class:"control-label" %>
+    <%= form.text_area :additionals, class:"form-control" %>
   </div>
+ 
 
+    <%= form.fields_for :producats do |builder|%>
 
+    <div class="form-group">
+    <%= builder.label "Categoria", class:"col-sm-2 control-label" %>
+      <%= builder.collection_select :category_id, Category.all, :id, :name,{}, { :class => 'form-control' } %>
+    </div>
+    <!--<%=form.label :category %>
+    <%=form.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>-->
+    <!--<%=form.select :category_id,
+                    Category.all.map{|category|
+                    [category.name, category.id] }, prompt:"Seleccione una opción.."%> -->
+    <%end%>
+
+    <div class="form-group">
+    <%= form.label "Fotos", class:" control-label" %>
+    <%= form.file_field :photos, multiple: true,  class:"form-control" %>
+  </div>
   
+  <% if lightitem.photos.count > 0 %>
+  <div class="d-flex flex-wrap">
+    <% lightitem.photos.each do |foto|%>  
+        
+        <%=image_tag(foto.variant(resize: "100"), :class =>"my-3") %>
+        
+        <%= link_to 'X', delete_image_attachment_lightitem_url(foto.id),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, :class =>"mr-3 btn-remove btn btn-danger " %>
+        <%end%>
+        
+    </div>
+  <%end%>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions my-5">
+    <%= form.submit "Guardar",  class:"btn-go btn-sm" %>
   </div>
 <% end %>

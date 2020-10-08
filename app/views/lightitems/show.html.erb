@@ -1,24 +1,104 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @lightitem.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @lightitem.description %>
-</p>
+<div class="container items-index">
 
-<p>
-  <strong>Brand:</strong>
-  <%= @lightitem.brand %>
-</p>
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4 titulo-seccion"> <%=@lightitem.name%>
+    <small><%= @lightitem.brand%></small>
+  </h1>
 
-<p>
-  <strong>Power:</strong>
-  <%= @lightitem.power %>
-</p>
+  <!-- Portfolio Item Row -->
+  <div class="row">
 
-<%= link_to 'Edit', edit_lightitem_path(@lightitem) %> |
-<%= link_to 'Back', lightitems_path %>
+    <div class="col-md-6">
+      <%= image_tag @lightitem.photos.first.variant(resize:500), class:"d-flex img-fluid" %>
+      <h3 class="my-3 titulo-producto">Descripciòn</h3>
+      <p> <%=@lightitem.description%> </p>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="titulo-espec mb-3">Especificaciones</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>Item</th>
+          <th>Valor</th>
+        </tr>
+        <tr>
+          <td> <strong>Marca</strong> </td>
+          <td> <%=@lightitem.brand %></td>
+        </tr>
+        <tr>
+          <td> <strong>Potencia</strong> </td>
+          <td> <%=@lightitem.power %></td>
+        </tr>
+        <tr>
+          <td> <strong>Flux</strong> </td>
+          <td> <%=@lightitem.flux %></td>
+        </tr>
+        <tr>
+          <td> <strong>Voltaje</strong> </td>
+          <td> <%=@lightitem.voltage %></td>
+        </tr>
+        <tr>
+          <td> <strong>Vida Ùtil</strong> </td>
+          <td> <%=@lightitem.useful_life %></td>
+        </tr>
+        <tr>
+          <td> <strong>Protecciòn IP</strong> </td>
+          <td> <%=@lightitem.ip_protection %></td>
+        </tr>
+        <tr>
+          <td> <strong>Temperatura de Color</strong> </td>
+          <td> <%=@lightitem.color_temp %></td>
+        </tr>
+        <tr>
+          <td> <strong>Adicionales</strong> </td>
+          <td> <%=@lightitem.additionals %></td>
+        </tr>
+      </table>
+      
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+
+
+
+  <!-- Related Projects Row -->
+  <h3 class="my-4">Related Projects</h3>
+
+  <div class="row">
+
+  <% @listado.first(5).each do |item|%>
+    
+    <% if item.active?%>
+  <div class="col-lg-3 col-md-6">
+            <div class="member card aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+            <div class="pic"> <%= image_tag item.photos.first.variant(resize:300), class:"d-flex img-fluid" %> </div>
+              <div class="member-info text-center">
+                <h4><%= item.name%></h4>
+                <span><%= item.brand%></span>
+                <div class="social">
+                <%= link_to 'ver mas...', lightitem_path(item.id), class:"btn btn btn-outline-success" %>
+                
+                  <a href=""></a>
+                  
+                </div>
+              </div>
+            </div>
+  </div>
+  <%end%>
+<%end%>
+    
+
+  </div>
+  <!-- /.row -->
+
+</div>
+
+
+
+<!--
+<%= link_to 'Back', lightitems_path , class:"btn-go"%>
+-->

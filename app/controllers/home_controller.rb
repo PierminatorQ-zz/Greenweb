@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @lighitem = Lightitem.all
+
   end
 
   def about

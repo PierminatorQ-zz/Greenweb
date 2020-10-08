@@ -1,5 +1,7 @@
 class CctvitemsController < ApplicationController
   before_action :set_cctvitem, only: [:show, :edit, :update, :destroy]
+  before_action :delete_category, only: [:update]
+  
 
   # GET /cctvitems
   # GET /cctvitems.json
@@ -15,6 +17,7 @@ class CctvitemsController < ApplicationController
   # GET /cctvitems/new
   def new
     @cctvitem = Cctvitem.new
+    @categories= @cctvitem.producats.build
   end
 
   # GET /cctvitems/1/edit
@@ -69,6 +72,11 @@ class CctvitemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cctvitem_params
-      params.require(:cctvitem).permit(:name, :description, :brand, :status, :resolution, :type_of,  :channels, :max_channels_ip, :additionals)
+      params.require(:cctvitem).permit(:name, :description, :brand, :status, :resolution, :type_of,  :channels, :max_channels_ip, :additionals, producats_attributes: [:category_id, :name], photos: [])
+    end
+
+    def delete_category
+      @category = Producat.where(cctvitem: @cctvitem.id).first
+      @category.destroy
     end
 end

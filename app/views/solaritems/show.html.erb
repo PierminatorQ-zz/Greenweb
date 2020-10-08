@@ -20,5 +20,10 @@
   <%= @solaritem.peak_power %>
 </p>
 
+<% @solaritem.categories.each do |t| %>
+
+  <p> <%=t.name%></p>
+  <%end%>
+
 <%= link_to 'Edit', edit_solaritem_path(@solaritem) %> |
 <%= link_to 'Back', solaritems_path %>

@@ -71,8 +71,41 @@
     <%= form.text_area :additionals %>
   </div>
 
+ <%= form.fields_for :producats do |builder|%>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+    <%= builder.label "Categoria", class:"col-sm-2 control-label" %>
+      <%= builder.collection_select :category_id, Category.all, :id, :name,{}, { :class => 'form-control' } %>
+    </div>
+    <!--<%=form.label :category %>
+    <%=form.collection_check_boxes :category_ids, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>-->
+    <!--<%=form.select :category_id,
+                    Category.all.map{|category|
+                    [category.name, category.id] }, prompt:"Seleccione una opción.."%> -->
+    <%end%>
+
+
+  <div class="form-group">
+    <%= form.label "Fotos", class:" control-label" %>
+    <%= form.file_field :photos, multiple: true,  class:"form-control" %>
+  </div>
+  
+  <% if solaritem.photos.count > 0 %>
+  <div class="d-flex flex-wrap">
+    <% solaritem.photos.each do |foto|%>  
+        
+        <%=image_tag(foto.variant(resize: "100"), :class =>"my-3") %>
+        
+        <%= link_to 'X', delete_image_attachment_solaritem_url(foto.id),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, :class =>"mr-3 btn-remove btn btn-danger " %>
+        <%end%>
+        
+    </div>
+  <%end%>
+
+  <div class="actions my-5">
+    <%= form.submit "Guardar", class:"btn-go btn-sm" %>
   </div>
 <% end %>
