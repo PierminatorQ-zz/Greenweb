@@ -1820,3 +1820,7 @@ section {
 .logo{
   width:100px;
 }
+
+.card-img-top{
+  width: 300px;
+}
